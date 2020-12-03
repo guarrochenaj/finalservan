@@ -1,5 +1,36 @@
 <?php
+include_once('conexion.php');
 
+// Existe usuario?
+if(!isset($_SESSION['user_nombre_completo'])){
+    // Reenvio al usuario para finalizar el login
+    $forw = 'login.php';
+    header(sprintf("Location: %s", $forw));
+
+}
+
+
+if(isset($_POST['Dni']) && $_POST['Dni'] != ''){
+$query = "INSERT into edibis.usuarios (Dni, Usuario, Contrasena, Tipo_Perfil, Nombre, Apellido, Email, Fecha_Nacimiento, Pais, Provincia, Ciudad, Direccion)
+VALUES
+(
+  '".$_POST['Dni']."',
+  '".$_POST['Usuario']."',
+  '".$_POST['contrasena']."',
+  '".$_POST['Tipo_Perfil']."',
+  '".$_POST['Nombre']."',
+  '".$_POST['Apellido']."',
+  '".$_POST['Email']."',
+  '".$_POST['Fecha_nacimiento']."',
+  '".$_POST['Pais']."',
+  '".$_POST['Provincia']."',
+  '".$_POST['Ciudad']."',
+  '".$_POST['Direccion']."'
+  )
+";
+$stmt = $cnPDO->prepare($query);
+$stmt->execute();
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,53 +45,28 @@
 
 </head>
 
-<nav class="">
-    <a href="index.php"><img src="ed.png" width="125px"></a>
-    <a href="administracion.php" class="btn btn-primary float-right mx-1 my-3">Administracion</a>
-    <a href="perfil.php" class="btn btn-primary float-right mx-1 my-3">Perfil</a>
-    <a href="login.php" class="btn btn-primary float-right mx-1 my-3">Login/Logout</a>
-</nav>
+<?php include_once "nav.php";?>
 
 <body>
-    <form action="">
-     Numero de documento: <input type="number" id="Dni" required class="m-1"><br>
-     Usuario: <input type="text" required id="Usuario" class="m-1"><br>
-     Contraseña: <input type="password" required id="contraseña" class="m-1"><br>
-     Perfil: <select name="" id="Tipo_Perfil" required class="m-1">
+    <form name="nuevo_usuario" id="nuevo_usuario" method="post">
+     Numero de documento: <input type="number" id="Dni" name="Dni" required class="m-1"><br>
+     Usuario: <input type="text" required id="Usuario" name="Usuario" class="m-1"><br>
+     Contraseña: <input type="password" required id="contrasena" name="contrasena" class="m-1"><br>
+     Perfil: <select id="Tipo_Perfil" required class="m-1" name="Tipo_Perfil">
          <option value="1">Alumno</option>
          <option value="2">Maestro</option>
      </select> <br>
-     Nombre: <input type="text" required id="Nombre" class="m-1"><br>
-     Apellido: <input type="text" required id="Apellido" class="m-1"><br>
-     Email: <input type="mail" required id="Email" class="m-1"><br>
-     Fecha de nacimiento: <input type="date" required id="Fecha_nacimiento" class="m-1"><br>
-     Pais: <input type="text" id="Pais" class="m-1"><br>
-     Provincia: <input type="text" id="Provincia" class="m-1"><br>
-     Ciudad: <input type="text" id="Ciudad" class="m-1"><br>
-     Direccion: <input type="text" id="Direccion" class="m-1"><br><br>
+     Nombre: <input type="text" required id="Nombre" name="Nombre" class="m-1"><br>
+     Apellido: <input type="text" required id="Apellido" name="Apellido" class="m-1"><br>
+     Email: <input type="mail" required id="Email" name="Email" class="m-1"><br>
+     Fecha de nacimiento: <input type="date" required id="Fecha_nacimiento" name="Fecha_nacimiento" class="m-1"><br>
+     Pais: <input type="text" id="Pais" name="Pais" class="m-1"><br>
+     Provincia: <input type="text" id="Provincia" name="Provincia" class="m-1"><br>
+     Ciudad: <input type="text" id="Ciudad" name="Ciudad" class="m-1"><br>
+     Direccion: <input type="text" id="Direccion" name="Direccion"  class="m-1"><br><br>
      <input type="submit" class="m-2"><input type="reset" class="m-1">
      </form>
 
-     <!-- <form action="">
-         <Div class="float-left">
-             <input type="number" id="Dni" required class="m-1" placeholder="Numero Documento"><br>
-             <input type="text" required id="Usuario" class="m-1" placeholder="Usuario"><br>
-             <input type="password" required id="contraseña" class="m-1" placeholder="Contraseña"><br>
-             <select name="" id="Tipo_Perfil" required class="m-1" > 
-                <option value="1">Alumno</option>
-                <option value="2">Maestro</option>
-             </select>Tipo Perfil <br>
-             <input type="text" required id="Nombre" class="m-1" placeholder="Nombre"><br>
-             <input type="text" required id="Apellido" class="m-1" placeholder="Apellido"><br>
-             <input type="mail" required id="Email" class="m-1" placeholder="E-mail"><br>
-             <input type="date" required id="Fecha_nacimiento" class="m-1" placeholder="Fecha nacimiento"> Fecha nacimiento<br>
-             <input type="text" id="Pais" class="m-1" placeholder="Pais"><br>
-             <input type="text" id="Provincia" class="m-1" placeholder="Provincia"><br>
-             <input type="text" id="Ciudad" class="m-1" placeholder="Ciudad"><br>
-             <input type="text" id="Direccion" class="m-1" placeholder="Direccion"><br><br>
-             <input type="submit" class="m-2"><input type="reset" class="m-1">
-         </Div>
-     </form>-->
 </body>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

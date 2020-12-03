@@ -1,4 +1,14 @@
 <?php
+include_once('conexion.php');
+
+// Existe usuario?
+if(!isset($_SESSION['user_nombre_completo'])){
+        // Reenvio al usuario para finalizar el login
+       $forw = 'login.php';
+       header(sprintf("Location: %s", $forw));
+}
+
+
 
 ?>
 
@@ -14,12 +24,7 @@
 
 </head>
 
-<nav class="">
-    <a href="index.php"><img src="ed.png" width="125px"></a>
-    <a href="administracion.php" class="btn btn-primary float-right mx-1 my-3">Administracion</a>
-    <a href="perfil.php" class="btn btn-primary float-right mx-1 my-3">Perfil</a>
-    <a href="login.php" class="btn btn-primary float-right mx-1 my-3">Login/Logout</a>
-</nav>
+<?php include_once "nav.php";?>
 
 <body>
     <form action="" class="m-2">

@@ -1,3 +1,6 @@
+<?php
+include_once('conexion.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +14,7 @@
 
     </head>
 
-    <nav class="">
-        <a href="index.php"><img src="ed.png" width="125px"></a>
-        <a href="administracion.php" class="btn btn-primary float-right mx-1 my-3">Administracion</a>
-        <a href="perfil.php" class="btn btn-primary float-right mx-1 my-3">Perfil</a>
-        <a href="login.php" class="btn btn-primary float-right mx-1 my-3">Login/Logout</a>
-    </nav>
+    <?php include_once "nav.php";?>
 
 <body>
      <div class="row justify-content-center align-items-center">

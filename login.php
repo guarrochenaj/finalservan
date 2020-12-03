@@ -19,6 +19,7 @@ if (isset($_POST['inputEmail'])) {
            $_SESSION['user_nombre_completo'] = $datos_del_select['Nombre'] . " " . $datos_del_select['Apellido'];
            $_SESSION['user_email'] = $datos_del_select['Email'] ;
            $_SESSION['user_id'] = $datos_del_select['Dni'] ;
+           $_SESSION['user_perfil'] = $datos_del_select['Tipo_Perfil'] ;
            $_SESSION['user'] = $datos_del_select['Usuario'] ;
            $_SESSION['user_nombre'] = $datos_del_select['Nombre'] ;
            $_SESSION['user_apellido'] = $datos_del_select['Apellido'] ;

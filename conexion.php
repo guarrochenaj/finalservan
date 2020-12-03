@@ -7,5 +7,4 @@
   $pass="";
 
   $cnPDO = new PDO($dsn, $usuario, $pass);
-
  ?>
