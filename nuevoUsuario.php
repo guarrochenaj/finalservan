@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +15,10 @@
 </head>
 
 <nav class="">
-    <a href="index.html"><img src="ed.png" width="125px"></a>
-    <a href="administracion.html" class="btn btn-primary float-right mx-1 my-3">Administracion</a>
-    <a href="perfil.html" class="btn btn-primary float-right mx-1 my-3">Perfil</a>
-    <a href="login.html" class="btn btn-primary float-right mx-1 my-3">Login/Logout</a>
+    <a href="index.php"><img src="ed.png" width="125px"></a>
+    <a href="administracion.php" class="btn btn-primary float-right mx-1 my-3">Administracion</a>
+    <a href="perfil.php" class="btn btn-primary float-right mx-1 my-3">Perfil</a>
+    <a href="login.php" class="btn btn-primary float-right mx-1 my-3">Login/Logout</a>
 </nav>
 
 <body>

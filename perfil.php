@@ -1,36 +1,50 @@
+<?php
+include_once('conexion.php');
+
+// Existe usuario?
+if(!isset($_SESSION['user_nombre_completo'])){
+        // Reenvio al usuario para finalizar el login
+       $forw = 'login.php';
+       header(sprintf("Location: %s", $forw));
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edibis</title>
+    <title>Edibis | Home</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
-
+    
     </head>
 
     <nav class="">
-        <a href="index.html"><img src="ed.png" width="125px"></a>
-        <a href="administracion.html" class="btn btn-primary float-right mx-1 my-3">Administracion</a>
-        <a href="perfil.html" class="btn btn-primary float-right mx-1 my-3">Perfil</a>
-        <a href="login.html" class="btn btn-primary float-right mx-1 my-3">Login/Logout</a>
+        <a href="index.php"><img src="ed.png" width="125px"></a>
+        <a href="administracion.php" class="btn btn-primary float-right mx-1 my-3">Administracion</a>
+        <a href="perfil.php" class="btn btn-primary float-right mx-1 my-3">Perfil</a>
+        <a href="login.php" class="btn btn-primary float-right mx-1 my-3">Login/Logout</a>
     </nav>
 
-<body>
-     <div class="row justify-content-center align-items-center">
-         <a href="nuevoUsuario.html" class="btn btn-primary p-3 m-3">Nuevo<br>Usuario</a>
-         <a href="nuevaMateria.html" class="btn btn-primary p-3 m-3">Nueva <br>Materia</a>
-         <a href="modificarUsuario.html" class="btn btn-primary p-3 m-3">Modificar<br>Usuario</a>
-         <a href="modificarMateria.html" class="btn btn-primary p-3 m-3">Modificar<br>Materia</a>
-         <a href="" class="btn btn-primary p-3 m-3">Correo<br>Masivo</a>
-     </div>
+    <body>
 
-    
+    <p><b>Numero de documento:</b> <?php echo $_SESSION['user_id'] ?></p>
+    <p><b>Usuario:</b> <?php echo $_SESSION['user'] ?></p>
+    <p><b>Nombre:</b> <?php echo $_SESSION['user_nombre'] ?></p>
+    <p><b>Apellido:</b> <?php echo $_SESSION['user_apellido'] ?></p>
+    <p><b>Email:</b> <?php echo $_SESSION['user_email'] ?></p>
+    <p><b>Fecha de nacimiento:</b> <?php echo $_SESSION['f_nacimiento'] ?></p>
+    <p><b>Pais:</b> <?php echo $_SESSION['pais'] ?></p>
+    <p><b>Provincia:</b> <?php echo $_SESSION['provincia'] ?></p>
+    <p><b>Ciudad:</b> <?php echo $_SESSION['ciudad'] ?></p>
+    <p><b>Direccion:</b> <?php echo  $_SESSION['direccion']?></p>
 
 
-</body>
+    </body>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

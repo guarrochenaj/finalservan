@@ -1,3 +1,15 @@
+<?PHP
+include_once('conexion.php');
+
+    // Existe usuario?
+    if(!isset($_SESSION['user_nombre_completo'])){
+            // Reenvio al usuario para finalizar el login
+           $forw = 'login.php';
+           header(sprintf("Location: %s", $forw));
+    }
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,19 +20,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
-
+    
     </head>
 
     <nav class="">
-        <a href="index.html"><img src="ed.png" width="125px"></a>
-        <a href="administracion.html" class="btn btn-primary float-right mx-1 my-3">Administracion</a>
-        <a href="perfil.html" class="btn btn-primary float-right mx-1 my-3">Perfil</a>
-        <a href="login.html" class="btn btn-primary float-right mx-1 my-3">Login/Logout</a>
+        <a href="index.php"><img src="ed.png" width="125px"></a>
+        <a href="administracion.php" class="btn btn-primary float-right mx-1 my-3">Administracion</a>
+        <a href="perfil.php" class="btn btn-primary float-right mx-1 my-3">Perfil</a>
+        <a href="login.php" class="btn btn-primary float-right mx-1 my-3">Login/Logout</a>
     </nav>
 
     <body>
 
-    
+    <h2>¡Hola <?= $_SESSION['user_nombre_completo'] ?>!</h2>
+    <h3>Estas son tus aulas</h3>
     
 
 
