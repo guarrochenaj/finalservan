@@ -28,7 +28,7 @@ $query = "SELECT Dni, Nombre, Apellido FROM edibis.usuarios where Tipo_Perfil > 
 
 <body>
     <form action="" class="m-2">
-         Nombre: <input type="text" name="Nombre_Materia" id="Nombre_Materia"><br>
+         Nombre sala: <input type="text" name="Nombre_Materia" id="Nombre_Materia"><br>
 
          <input type="submit" class="m-2">
     </form>
