@@ -29,6 +29,7 @@ if(!isset($_SESSION['user_nombre_completo'])){
 <body>
     <form action="" class="m-2">
          Nombre Materia: <input type="text" name="Nombre_Materia" id="Nombre_Materia"><br>
+         Responsable: <input tipe="list" name="Responsable_materia" id="Responsable_materia"><br>
          <input type="submit" class="m-2">
     </form>
 
