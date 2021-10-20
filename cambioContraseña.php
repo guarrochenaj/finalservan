@@ -10,13 +10,15 @@ if(!isset($_SESSION['user_nombre_completo'])){
 }
 
 
-if(isset($_POST['contraseña']) && $_POST['contrasena'] == $_POST['contrasena2']){
-$query ="UPDATE 'edibis.usuarios' 
-        SET 'Contrasena' = '.$_POST['contrasena'].' 
-        WHERE Dni = '$_SESSION['user_id']'";
-$stmt = $cnPDO->prepare($query);
-$stmt->execute();
-};
+if(isset($_POST['contrasena']) && $_POST['contrasena'] == $_POST['contrasena2']){
+    $query ="UPDATE edibis.usuarios 
+            SET Contrasena= '".$_POST['contrasena']."' 
+            WHERE Dni = ".$_SESSION['user_id']."";
+    $stmt = $cnPDO->prepare($query);
+    $stmt->execute();
+    };
+
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +26,7 @@ $stmt->execute();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edibis | Nuevo Usuario</title>
+    <title>Edibis | Modificar Contraseña</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
