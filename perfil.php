@@ -28,18 +28,20 @@ if(!isset($_SESSION['user_nombre_completo'])){
     <?php include_once "nav.php";?>
 
     <body>
+        <div style= padding: 30px;>
 
-    <p><b>Numero de documento:</b> <?php echo $_SESSION['user_id'] ?></p>
-    <p><b>Usuario:</b> <?php echo $_SESSION['user'] ?></p>
-    <p><b>Nombre:</b> <?php echo $_SESSION['user_nombre'] ?></p>
-    <p><b>Apellido:</b> <?php echo $_SESSION['user_apellido'] ?></p>
-    <p><b>Email:</b> <?php echo $_SESSION['user_email'] ?></p>
-    <p><b>Fecha de nacimiento:</b> <?php echo $_SESSION['f_nacimiento'] ?></p>
-    <p><b>Pais:</b> <?php echo $_SESSION['pais'] ?></p>
-    <p><b>Provincia:</b> <?php echo $_SESSION['provincia'] ?></p>
-    <p><b>Ciudad:</b> <?php echo $_SESSION['ciudad'] ?></p>
-    <p><b>Direccion:</b> <?php echo  $_SESSION['direccion']?></p>
-
+            <p><b>Numero de documento:</b> <?php echo $_SESSION['user_id'] ?></p>
+            <p><b>Usuario:</b> <?php echo $_SESSION['user'] ?></p>
+            <p><b>Nombre:</b> <?php echo $_SESSION['user_nombre'] ?></p>
+            <p><b>Apellido:</b> <?php echo $_SESSION['user_apellido'] ?></p>
+            <p><b>Email:</b> <?php echo $_SESSION['user_email'] ?></p>
+            <p><b>Fecha de nacimiento:</b> <?php echo $_SESSION['f_nacimiento'] ?></p>
+            <p><b>Pais:</b> <?php echo $_SESSION['pais'] ?></p>
+            <p><b>Provincia:</b> <?php echo $_SESSION['provincia'] ?></p>
+            <p><b>Ciudad:</b> <?php echo $_SESSION['ciudad'] ?></p>
+            <p><b>Direccion:</b> <?php echo  $_SESSION['direccion']?></p>
+            
+        </div>
     <a href="modificarDatos.php" class="btn btn-primary p-3 m-3">Modificar<br>Datos</a>
     <a href="cambioContraseña.php" class="btn btn-primary p-3 m-3">Modificar<br>Contraseña</a>
 

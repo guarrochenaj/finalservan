@@ -28,7 +28,21 @@ $query = "SELECT Dni, Nombre, Apellido FROM edibis.usuarios where Tipo_Perfil > 
 
 <body>
     <form action="" class="m-2">
-         Nombre sala: <input type="text" name="Nombre_Materia" id="Nombre_Materia"><br>
+         Nombre Materia: <input type="text" name="Nombre_Sala" id="Nombre_Sala"><br>
+
+         
+         Responsable:<select name="usuarios"> 
+            <?php
+                $stmt = $cnPDO->query("SELECT Dni, Nombre, Apellido 
+                                        FROM edibis.usuarios 
+                                        where Tipo_Perfil > 1
+                                        ORDER BY Nombre;");
+                while ($row = $stmt->fetch()) {
+                    echo "<option value='".$row['Dni']."'>".$row['Apellido']. ", ".$row['Nombre']. "</option>\n";
+                }
+            ?>
+        </select>
+         
 
          <input type="submit" class="m-2">
     </form>

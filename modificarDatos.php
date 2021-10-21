@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 <?php include_once "nav.php";?>
 
 <body>
-    <form name="modificar usuario" id="modificar usuario" method="post">
+    <form name="modificar usuario" id="modificar usuario" method="POST">
      Nombre: 
      <input type="text" id="Nombre" name="Nombre" class="m-1" placeholder=<?php echo $_SESSION['user_nombre'] ?>><br>
      Apellido: 
