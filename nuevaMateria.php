@@ -8,9 +8,26 @@ if(!isset($_SESSION['user_nombre_completo'])){
        header(sprintf("Location: %s", $forw));
 }
 
-$query = "SELECT Dni, Nombre, Apellido FROM edibis.usuarios where Tipo_Perfil > 1;"
+
+
+if(isset($_POST['Dni']) && $_POST['Nombre_materia'] != ''){
+    $query = "INSERT into edibis.materia (Nombre_Materia, Dni, Fecha_Creacion)
+    VALUES
+    (
+      '".$_POST['Nombre_Materia']."',
+      '".$_POST['Dni']."',
+      '".$_POST['Fecha_Creacion']."'
+      
+      )
+    ";
+    $stmt = $cnPDO->prepare($query);
+    $stmt->execute();
+    }
+
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,10 +45,10 @@ $query = "SELECT Dni, Nombre, Apellido FROM edibis.usuarios where Tipo_Perfil > 
 
 <body>
     <form action="" class="m-2">
-         Nombre Materia: <input type="text" name="Nombre_Sala" id="Nombre_Sala"><br><br>
+         Nombre Materia: <input type="text" name="Nombre_Materia" id="Nombre_Materia"><br><br>
 
          
-         Responsable: <select name="usuarios"> 
+         Responsable: <select name="Dni" id="Dni"> 
             <?php
                 $stmt = $cnPDO->query("SELECT Dni, Nombre, Apellido 
                                         FROM edibis.usuarios 
@@ -49,10 +66,10 @@ $query = "SELECT Dni, Nombre, Apellido FROM edibis.usuarios where Tipo_Perfil > 
 
 </body>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            -->
 
 </html>
