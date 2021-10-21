@@ -28,10 +28,10 @@ $query = "SELECT Dni, Nombre, Apellido FROM edibis.usuarios where Tipo_Perfil > 
 
 <body>
     <form action="" class="m-2">
-         Nombre Materia: <input type="text" name="Nombre_Sala" id="Nombre_Sala"><br>
+         Nombre Materia: <input type="text" name="Nombre_Sala" id="Nombre_Sala"><br><br>
 
          
-         Responsable:<select name="usuarios"> 
+         Responsable: <select name="usuarios"> 
             <?php
                 $stmt = $cnPDO->query("SELECT Dni, Nombre, Apellido 
                                         FROM edibis.usuarios 
@@ -41,7 +41,7 @@ $query = "SELECT Dni, Nombre, Apellido FROM edibis.usuarios where Tipo_Perfil > 
                     echo "<option value='".$row['Dni']."'>".$row['Apellido']. ", ".$row['Nombre']. "</option>\n";
                 }
             ?>
-        </select>
+        </select><br><br>
          
 
          <input type="submit" class="m-2">
