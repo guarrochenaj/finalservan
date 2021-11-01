@@ -28,7 +28,6 @@ if(!isset($_SESSION['user_nombre_completo'])){
     <?php include_once "nav.php";?>
 
     <body>
-        <div style= padding: 30px;>
 
             <p><b>Numero de documento:</b> <?php echo $_SESSION['user_id'] ?></p>
             <p><b>Usuario:</b> <?php echo $_SESSION['user'] ?></p>
@@ -41,7 +40,6 @@ if(!isset($_SESSION['user_nombre_completo'])){
             <p><b>Ciudad:</b> <?php echo $_SESSION['ciudad'] ?></p>
             <p><b>Direccion:</b> <?php echo  $_SESSION['direccion']?></p>
             
-        </div>
     <a href="modificarDatos.php" class="btn btn-primary p-3 m-3">Modificar<br>Datos</a>
     <a href="cambioContraseña.php" class="btn btn-primary p-3 m-3">Modificar<br>Contraseña</a>
 
