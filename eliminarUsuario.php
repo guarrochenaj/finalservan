@@ -7,9 +7,15 @@ if(!isset($_SESSION['user_nombre_completo'])){
        $forw = 'login.php';
        header(sprintf("Location: %s", $forw));
 }
-
-$query = "SELECT Dni, Nombre, Apellido FROM edibis.usuarios where Tipo_Perfil > 1;"
-
+//falta corregir esto
+if(".$row['Dni']." != "$_SESSION['user_id']")
+{
+    $query2 ="DELETE 
+    FROM `edibis`.`usuarios` 
+    WHERE (`Dni` = '".$row['Dni']."');";
+    $stmt = $cnPDO->prepare($query2);
+    $stmt->execute();
+};
 ?>
 
 <!DOCTYPE html>
@@ -27,15 +33,14 @@ $query = "SELECT Dni, Nombre, Apellido FROM edibis.usuarios where Tipo_Perfil > 
 <?php include_once "nav.php";?>
 
 <body>
-    <form action="" class="m-2">
+    <form action="" class="m-2" method="post">
          
 
          
-         Usuario: <select name="usuarios"> 
+         Usuario: <select name="usuarios" id="usuarios"> 
             <?php
                 $stmt = $cnPDO->query("SELECT Dni, Nombre, Apellido 
                                         FROM edibis.usuarios 
-                                        where Tipo_Perfil < 3
                                         ORDER BY Nombre;");
                 while ($row = $stmt->fetch()) {
                     echo "<option value='".$row['Dni']."'>".$row['Apellido']. ", ".$row['Nombre']. "</option>\n";
