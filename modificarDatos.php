@@ -8,18 +8,38 @@ if(!isset($_SESSION['user_nombre_completo'])){
     header(sprintf("Location: %s", $forw));
 
 }
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $query ="UPDATE edibis.usuarios 
-            SET (Nombre ='".$_POST['Nombre']."', 
-                Apellido ='".$_POST['Apellido']."', 
-                Email = '".$_POST['Email']."', 
-                Pais = '".$_POST['Pais']."', 
-                Provincia ='".$_POST['Provincia']."', 
-                Ciudad = '".$_POST['Ciudad']."', 
-                Direcion ='".$_POST['Direccion']."')
-            WHERE Dni = ".$_SESSION['user_id']."";
+ if(isset($_POST['Nombre']) && $_POST['Apellido'] != ''){
+    $query ="UPDATE `edibis`.`usuarios` 
+    SET `Nombre` = '".$_POST['Nombre']."', 
+    `Apellido` = '".$_POST['Apellido']."', 
+    `Email` = '".$_POST['Email']."', 
+    `Pais` = '".$_POST['Pais']."', 
+    `Provincia` = '".$_POST['Provincia']."', 
+    `Ciudad` = '".$_POST['Ciudad']."', 
+    `Direccion` = '".$_POST['Direccion']."' 
+    
+    WHERE (`Dni` = ".$_SESSION['user_id'].")";
     $stmt = $cnPDO->prepare($query);
     $stmt->execute();
+    // prueba logout
+    session_name("SesionesEdibis");
+    session_start();
+
+
+    //authenticated user request
+    session_destroy();
+    $parametros_cookies = session_get_cookie_params(); 
+    setcookie(session_name(),0,1,$parametros_cookies["path"]);
+
+            unset($_SESSION);
+
+    session_unset();
+
+    // Reenvio con mensaje 6 "Deslogueado"
+    header(sprintf("Location: %s", "login.php"));
+    exit;
+    echo "tu vieja tirabombas";
+
     };
 
 
@@ -40,21 +60,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 <?php include_once "nav.php";?>
 
 <body>
-    <form name="modificar usuario" id="modificar usuario" method="POST">
+    <form name="modificar_usuario" id="modificar_usuario" method="POST">
      Nombre: 
-     <input type="text" id="Nombre" name="Nombre" class="m-1" placeholder=<?php echo $_SESSION['user_nombre'] ?>><br>
+     <input type="text" id="Nombre" name="Nombre" class="m-1" value=<?php echo $_SESSION['user_nombre'] ?>><br>
      Apellido: 
-     <input type="text" id="Apellido" name="Apellido" class="m-1" placeholder=<?php echo $_SESSION['user_apellido'] ?>><br>
+     <input type="text" id="Apellido" name="Apellido" class="m-1" value=<?php echo $_SESSION['user_apellido'] ?>><br>
      Email: 
-     <input type="mail" id="Email" name="Email" class="m-1" placeholder=<?php echo $_SESSION['user_email'] ?>><br>
+     <input type="mail" id="Email" name="Email" class="m-1" value=<?php echo $_SESSION['user_email'] ?>><br>
      Pais: 
-     <input type="text" id="Pais" name="Pais" class="m-1" placeholder=<?php echo $_SESSION['pais'] ?>><br>
+     <input type="text" id="Pais" name="Pais" class="m-1" value=<?php echo $_SESSION['pais'] ?>><br>
      Provincia: 
-     <input type="text" id="Provincia" name="Provincia" class="m-1" placeholder=<?php echo $_SESSION['provincia'] ?>><br>
+     <input type="text" id="Provincia" name="Provincia" class="m-1" value=<?php echo $_SESSION['provincia'] ?>><br>
      Ciudad: 
-     <input type="text" id="Ciudad" name="Ciudad" class="m-1" placeholder=<?php echo $_SESSION['ciudad'] ?>><br>
+     <input type="text" id="Ciudad" name="Ciudad" class="m-1" value=<?php echo $_SESSION['ciudad'] ?>><br>
      Direccion: 
-     <input type="text" id="Direccion" name="Direccion"  class="m-1" placeholder=<?php echo $_SESSION['direccion'] ?>><br><br>
+     <input type="text" id="Direccion" name="Direccion"  class="m-1" value=<?php echo $_SESSION['direccion'] ?>><br><br>
      <input type="submit" class="m-2"><input type="reset" class="m-1">
      </form>
 
