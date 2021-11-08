@@ -15,7 +15,7 @@ include_once('conexion.php');
         $cnPDO->query("SELECT M.Id_Materia, M.Nombre_Materia, U.Dni, U.Apellido, U.Nombre FROM relacion_usuario_materia RUM
         LEFT JOIN materia M ON M.Id_Materia = RUM.id_materia
         LEFT JOIN usuarios U ON U.Dni = RUM.dni_alumno
-        WHERE RUM.dni_alumno = '". $Dni);
+        WHERE RUM.dni_alumno = ". $Dni);
     }else{
         $lista_de_materias_dictadas = $cnPDO->query("SELECT * FROM edibis.materia where Dni = ". $Dni);
     }
@@ -40,45 +40,45 @@ include_once('conexion.php');
 
     <body>
     <?php include_once "nav.php";?>
-    <h2>¡Hola <?= $_SESSION['user_nombre_completo'] ?>!</h2>
-    <h3>Estas son tus aulas</h3>
+        <div class="container">
+            <h2>¡Hola <?= $_SESSION['user_nombre_completo'] ?>!</h2>
+            <h3>Estas son tus aulas</h3>
 
 
-   <!-- visualizacion de aulas-->
-<?PHP
-   if($_SESSION['user_perfil'] == 1){?>
+        <!-- visualizacion de aulas-->
+        <?PHP
+        if($_SESSION['user_perfil'] <= 1){?>
 
-        <ul>
-                    
-                    <?php
-                       
-                       foreach ($lista_de_materias_cursadas AS $row) { ?>
-                           <li><a href="#" target="_blank
-                           "><?= $row['Nombre_Materia']; ?></a></li>
-                       <?PHP 
-                       };
-                    ?>
-        
-        </ul>
-
-    <?PHP }else{?>
-
-        <ul>
-                    
-                    <?php
-                       
-                        foreach ($lista_de_materias_dictadas AS $row) { ?>
-                            <li><a href="ver_aula.php?id=<?=$row['Id_Materia']?>">
-                            <?= $row['Nombre_Materia']; ?></a></li>
-                        <?PHP 
-                        };
-                    ?>
+                
                             
-    
-    
-        </ul>
+                            <?php
+                                foreach ($lista_de_materias_cursadas AS $row) { ?>
+                                    <button type="button" class="btn btn-outline-primary btn-lg"><a href="ver_aula.php?id=<?=$row['Id_Materia']?>">
+                                    <?= $row['Nombre_Materia']; ?></a></button><br><br>
+                                <?PHP 
+                                };
+                            ?>
+                
+                
 
-        <?PHP }?>
+            <?PHP }else{?>
+
+                
+                
+                            <?php
+                            
+                                foreach ($lista_de_materias_dictadas AS $row) { ?>
+                                    <button type="button" class="btn btn-outline-primary btn-lg"><a href="ver_aula.php?id=<?=$row['Id_Materia']?>">
+                                    <?= $row['Nombre_Materia']; ?></a></button><br><br>
+                                <?PHP 
+                                };
+                            ?>
+                                    
+            
+            
+                
+
+                <?PHP }?>
 
 
 
@@ -94,7 +94,7 @@ include_once('conexion.php');
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 
-
+    </div>
 
 </body>
 </html>

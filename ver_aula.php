@@ -35,10 +35,11 @@ include_once('conexion.php');
             <body>
                 <?php include_once "nav.php";?>
                 <!--Bienvenida al aula-->
+                
                 <?php
                     foreach($infoAula as $row){
                 ?>
-
+                        <br>
                         <div class="col-sm-4 text-center container">
                             <h1 class="bg-primary p-2 text-white"><?= $row['Titulo'];?></h1>
                                 <div class="bg-primary p-2" style="--bs-bg-opacity: .5;">
@@ -46,11 +47,12 @@ include_once('conexion.php');
                                         <?=$row['Contenido'];?>
                                     </p>
                                 </div>
-                            <br>
+                            
                         </div>
                 <?PHP 
                 };
                 ?>
+                <br>
 
                 
                     
