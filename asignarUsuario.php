@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_nombre_completo'])) {
     header(sprintf("Location: %s", $forw));
 }
 
-var_dump($_POST);
+
 
 if ($_POST['id_materia'] != 0 && $_POST['dni_alumno'] != 0) {
 
@@ -24,7 +24,7 @@ if ($_POST['id_materia'] != 0 && $_POST['dni_alumno'] != 0) {
     $stmt = $cnPDO->prepare($query2);
     $stmt->execute();
 }else{
-    echo "lke recomiendo ññenar elñ formulario";
+
 }
 
 
