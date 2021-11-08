@@ -43,6 +43,8 @@ if (isset($_POST['Dni']) && $_POST['Nombre_Materia'] != '') {
     <?php include_once "nav.php"; ?>
 
     <body>
+
+    <h3> Nueva Materia</h3>
         <form method="post" accept-charset="utf-8" role="form" id="validacion" action="" class="m-2">
             Nombre Materia: <input type="text" name="Nombre_Materia" id="Nombre_Materia"><br><br>
 

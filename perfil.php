@@ -28,7 +28,7 @@ if(!isset($_SESSION['user_nombre_completo'])){
     <?php include_once "nav.php";?>
 
     <body>
-
+        <h3> Perfil</h3>
             <p><b>Numero de documento:</b> <?php echo $_SESSION['user_id'] ?></p>
             <p><b>Usuario:</b> <?php echo $_SESSION['user'] ?></p>
             <p><b>Nombre:</b> <?php echo $_SESSION['user_nombre'] ?></p>

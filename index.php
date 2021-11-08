@@ -48,19 +48,18 @@ include_once('conexion.php');
 <?PHP
    if($_SESSION['user_perfil'] == 1){?>
 
-<ul>
+        <ul>
                     
                     <?php
-                        
-                        foreach ($lista_de_materias_cursadas AS $row) { ?>
-                            <li><a href="#" target="_blank
-                            "><?= $row['Nombre_Materia']; ?></a></li>
-                        <?PHP }
+                       
+                       foreach ($lista_de_materias_cursadas AS $row) { ?>
+                           <li><a href="#" target="_blank
+                           "><?= $row['Nombre_Materia']; ?></a></li>
+                       <?PHP 
+                       };
                     ?>
-                            
-    
-    
-                    </ul>
+        
+        </ul>
 
     <?PHP }else{?>
 
@@ -77,7 +76,7 @@ include_once('conexion.php');
                             
     
     
-                    </ul>
+        </ul>
 
         <?PHP }?>
 

@@ -55,6 +55,7 @@ if(isset($_POST['contrasena']) && $_POST['contrasena'] == $_POST['contrasena2'])
 <?php include_once "nav.php";?>
 
 <body>
+    <h3>Modificar Contraseña</h3>
     <form name="nueva_contraseña" id="nueva_contraseña" method="post">
      
      Nueva Contraseña: <input type="password" required id="contrasena" name="contrasena" class="m-1"><br>

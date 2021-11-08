@@ -59,6 +59,7 @@ if(!isset($_SESSION['user_nombre_completo'])){
 <?php include_once "nav.php";?>
 
 <body>
+    <h3> Modificar Datos</h3>
     <form name="modificar_usuario" id="modificar_usuario" method="POST">
      Nombre: 
      <input type="text" id="Nombre" name="Nombre" class="m-1" value=<?php echo $_SESSION['user_nombre'] ?>><br>

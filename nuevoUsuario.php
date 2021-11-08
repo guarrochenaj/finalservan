@@ -48,6 +48,7 @@ $stmt->execute();
 <?php include_once "nav.php";?>
 
 <body>
+    <h3> Crear Nuevo Usuario</h3>
     <form name="nuevo_usuario" id="nuevo_usuario" method="post">
      Numero de documento: <input type="number" id="Dni" name="Dni" required class="m-1"><br>
      Usuario: <input type="text" required id="Usuario" name="Usuario" class="m-1"><br>

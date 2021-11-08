@@ -17,12 +17,12 @@ include_once('conexion.php');
     <?php include_once "nav.php";?>
 
 <body>
+    <h3> Administracion</h3>
      <div class="row justify-content-center align-items-center">
          <a href="nuevoUsuario.php" class="btn btn-primary p-3 m-3">Nuevo<br>Usuario</a>
          <a href="nuevaMateria.php" class="btn btn-primary p-3 m-3">Nueva <br>Materia</a>
-         <a href="eliminarUsuario.php" class="btn btn-primary p-3 m-3">Eliminar<br>Usuario</a>
+         <a href="asignarUsuario.php" class="btn btn-primary p-3 m-3">Asignar<br>Usuarios</a>
          <a href="eliminarMateria.php" class="btn btn-primary p-3 m-3">Eliminar<br>Materia</a>
-         <a href="" class="btn btn-primary p-3 m-3">Correo<br>Masivo</a>
      </div>
 
     
