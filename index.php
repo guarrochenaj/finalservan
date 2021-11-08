@@ -17,7 +17,7 @@ include_once('conexion.php');
         LEFT JOIN usuarios U ON U.Dni = RUM.dni_alumno
         WHERE RUM.dni_alumno = '". $Dni);
     }else{
-        $lista_de_materias_dictadas = $cnPDO->query("SELECT Nombre_Materia FROM edibis.materia where Dni = ". $Dni);
+        $lista_de_materias_dictadas = $cnPDO->query("SELECT * FROM edibis.materia where Dni = ". $Dni);
     }
 
 
@@ -68,8 +68,8 @@ include_once('conexion.php');
                     <?php
                        
                         foreach ($lista_de_materias_dictadas AS $row) { ?>
-                            <li><a href="#" target="_blank
-                            "><?= $row['Nombre_Materia']; ?></a></li>
+                            <li><a href="ver_aula.php?id=<?=$row['Id_Materia']?>">
+                            <?= $row['Nombre_Materia']; ?></a></li>
                         <?PHP 
                         };
                     ?>

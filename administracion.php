@@ -23,6 +23,7 @@ include_once('conexion.php');
          <a href="nuevaMateria.php" class="btn btn-primary p-3 m-3">Nueva <br>Materia</a>
          <a href="asignarUsuario.php" class="btn btn-primary p-3 m-3">Asignar<br>Usuarios</a>
          <a href="eliminarMateria.php" class="btn btn-primary p-3 m-3">Eliminar<br>Materia</a>
+         <a href="nuevaClase.php" class="btn btn-primary p-3 m-3">Nueva<br>Clase</a>
      </div>
 
     

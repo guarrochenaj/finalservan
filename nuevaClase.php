@@ -10,19 +10,22 @@ if (!isset($_SESSION['user_nombre_completo'])) {
     header(sprintf("Location: %s", $forw));
 }
 
-
-if (isset($_POST['Dni']) && $_POST['Nombre_Materia'] != '') {
-    $query2 = "INSERT into edibis.materia (Nombre_Materia, Dni)
+//insersion clase en db
+if(isset($_POST['Titulo']) && $_POST['Titulo'] != ''){
+    $query2 = "INSERT into edibis.clases (Id_Materia, Titulo, Contenido)
     VALUES
     (
-      '" . $_POST['Nombre_Materia'] . "',
-      '" . $_POST['Dni'] . "'
-      
+      '".$_POST['Nombre_Materia']."',
+      '".$_POST['Titulo']."',
+      '".$_POST['Contenido']."'
       )
     ";
     $stmt = $cnPDO->prepare($query2);
     $stmt->execute();
-}
+    }
+
+
+$Dni = $_SESSION['user_id'];
 
 ?>
 
@@ -44,22 +47,20 @@ if (isset($_POST['Dni']) && $_POST['Nombre_Materia'] != '') {
 
     <body>
 
-    <h3> Nueva Materia</h3>
+    <h3> Nueva Clase</h3>
         <form method="post" accept-charset="utf-8" role="form" id="validacion" action="" class="m-2">
-            Nombre Materia: <input type="text" name="Nombre_Materia" id="Nombre_Materia"><br><br>
-
-
-            Responsable: <select name="Dni" id="Dni"> 
+ 
+            Materia: <select name="Nombre_Materia" id="Nombre_Materia"> 
                 <?php
-                $stmt = $cnPDO->query("SELECT Dni, Nombre, Apellido 
-                                        FROM edibis.usuarios 
-                                        where Tipo_Perfil > 1
-                                        ORDER BY Nombre;");
-                while ($row = $stmt->fetch()) {
-                    echo "<option value='" . $row['Dni'] . "'>" . $row['Apellido'] . ", " . $row['Nombre'] . "</option>\n";
-                }
-                ?>
-            </select><br><br>
+                    $stmt = $cnPDO->query("SELECT Id_Materia, Nombre_Materia FROM edibis.materia where Dni=" . $Dni);
+                        while ($row = $stmt->fetch()) {
+                            echo "<option value='" . $row['Id_Materia'] . "'>" . $row['Nombre_Materia'] . "</option>\n";
+                        }
+                    ?>
+                </select><br><br>
+            Titulo <input type="text" name="Titulo" id="Titulo"><br><br>
+
+            Contenido: <br><textarea name="Contenido" id="Contenido" cols="127" rows="10"></textarea><br>
 
 
             <input type="submit" class="m-2">
@@ -72,5 +73,4 @@ if (isset($_POST['Dni']) && $_POST['Nombre_Materia'] != '') {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     
-
 </html>
